@@ -6,19 +6,23 @@
 <title>Happyyyy birthdayyuu bbe⚘️</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,400;0,600;1,600&family=Outfit:wght@300;400;500;600;700&family=Sniglet:wght@800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Galada&family=Mali:ital,wght@0,400;0,600;1,600&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Sniglet:wght@800&display=swap" rel="stylesheet">
 
 <style>
 /* =====================================================================
-   SMOOTH GPU STYLESHEET
+   SMOOTH GPU STYLESHEET & TOMAY GHIRE FINALE THEME
    ===================================================================== */
 :root {
   --plum: #1a0a24; --plum-2: #3b1240; --wine: #7a1a4f;
   --pink: #ff4f8b; --hot: #d81b60; --cream: #fff4ec; --peach: #ffd8c4;
   --gold: #f6b94b; --coral: #ff7a59; --ink: #4a1d36; --paper: #fbf3e2;
+  --navy: #060b26; --crimson: #d91b26;
   --f-display: 'Sniglet', 'Nunito', system-ui, sans-serif;
   --f-hand: 'Mali', 'Segoe Print', cursive;
   --f-body: 'Outfit', system-ui, -apple-system, sans-serif;
+  --f-serif: 'Playfair Display', Georgia, serif;
+  --f-bn: 'Galada', cursive;
+  --f-script: 'Alex Brush', cursive;
   --sat: env(safe-area-inset-top, 0px); --sab: env(safe-area-inset-bottom, 0px);
   --sal: env(safe-area-inset-left, 0px); --sar: env(safe-area-inset-right, 0px);
 }
@@ -396,16 +400,33 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 
 /* 6 Finale */
 .fin { text-align: center; position: relative; z-index: 3; }
-.fin h2 { margin: 0; font-weight: 700; font-size: clamp(30px, 8.5vw, 56px); line-height: 1.1; letter-spacing: .02em; }
-.fin h2 em { display: block; font-family: var(--f-hand); font-style: italic; font-weight: 600; text-transform: none; color: var(--gold); font-size: 0.9em; margin-top: 6px; }
-.bear { font-size: clamp(62px, 16vw, 92px); margin: 16px 0 6px; display: inline-block; animation: bounce 2.2s ease-in-out infinite; }
+.fin h2 { margin: 0; font-weight: 700; font-size: clamp(24px, 7vw, 42px); line-height: 1.2; letter-spacing: .02em; color: var(--peach); }
+.fin h2 em { display: block; font-family: var(--f-hand); font-style: italic; font-weight: 600; text-transform: none; color: var(--gold); font-size: 1em; margin-top: 6px; }
+.bear { font-size: clamp(52px, 14vw, 82px); margin: 12px 0 4px; display: inline-block; animation: bounce 2.2s ease-in-out infinite; }
 @keyframes bounce {
   0%, 100% { transform: translate3d(0, 0, 0) rotate(-3deg); }
-  50% { transform: translate3d(0, -12px, 0) rotate(3deg); }
+  50% { transform: translate3d(0, -10px, 0) rotate(3deg); }
 }
 .fin p { margin: 0; font-size: 13px; opacity: .85; }
 .fin p b { color: var(--gold); font-weight: 600; }
-#replay { margin-top: 18px; }
+
+/* Tomay Ghire Fullscreen Video Player Overlay */
+#tomayStage {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: #060b26;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+#tomayStage.show { display: flex; }
+#tomayVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #060b26;
+}
 
 /* UI elements */
 #music {
@@ -422,7 +443,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 }
 #editBtn.show { display: block; }
 #panel {
-  position: absolute; inset: 0; z-index: 20; background: rgba(14, 5, 20, 0.92);
+  position: absolute; inset: 0; z-index: 200; background: rgba(14, 5, 20, 0.92);
   backdrop-filter: blur(8px); display: none; overflow-y: auto;
   padding: calc(var(--sat) + 16px) max(16px, var(--sal)) calc(var(--sab) + 24px) max(16px, var(--sar));
 }
@@ -479,7 +500,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
     <p class="pillHint light" style="margin-top:26px">👆 Tap the heart to begin</p>
   </section>
 
-  <!-- Scene 1: Happyyyy birthdayyuu bbe⚘️ -->
+  <!-- Scene 1: Splash -->
   <section class="scene" id="s1">
     <div class="band">
       <p class="wish">make a wish…</p>
@@ -490,7 +511,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
     <div class="bottomHint" id="skipHint"><span class="pillHint">Tap anywhere to continue 👆</span></div>
   </section>
 
-  <!-- Scene 2: Tree with Happyyyy birthdayyuu bbe⚘️ -->
+  <!-- Scene 2: Tree -->
   <section class="scene" id="s2">
     <canvas id="treeCv"></canvas>
     <div class="treeText" id="treeText">
@@ -571,8 +592,8 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
     <div class="fin">
       <h2>Happyyyy<br>birthdayyuu<em>bbe⚘️</em></h2>
       <div class="bear" aria-hidden="true">🧸</div>
-      <p>Made with 💛 just for you — <b id="fromLine"></b></p>
-      <button class="btn ghost" id="replay">Replay the surprise</button>
+      <p>Areehhh sesh hoini darao ache aro</p>
+      <button class="btn" id="tomayTriggerBtn" style="margin-top:16px">Ekhane chapo ✨</button>
     </div>
   </section>
 
@@ -589,7 +610,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
         <label>Turning (age)<input type="text" id="f-age" autocomplete="off" inputmode="numeric"></label>
       </div>
       <label>From (signature)<input type="text" id="f-from" autocomplete="off"></label>
-      <label>Balloon reasons (one per line, up to 6)<textarea id="f-reasons"></textarea></label>
+      <label>Balloon reasons (one per line, up to 4)<textarea id="f-reasons"></textarea></label>
       <label>Letter<textarea id="f-letter" style="min-height:180px"></textarea></label>
       <div class="row">
         <button class="btn" type="submit">Preview from the start</button>
@@ -599,9 +620,20 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
   </div>
 </main>
 
+<!-- Tomay Ghire Fullscreen Video & Separate MP3 Player Overlay -->
+<div id="tomayStage">
+  <video id="tomayVideo" playsinline preload="auto">
+    <source src="audio/Tomar-Jonno-Nilche-SnapYT.App.mp4" type="video/mp4">
+  </video>
+  <!-- Separate audio tag for exact custom last song execution -->
+  <audio id="lastOneAudio" preload="auto">
+    <source src="audio/LASTONE.mp3" type="audio/mp3">
+  </audio>
+</div>
+
 <script>
 /* =====================================================================
-   FINAL SCRIPT WITH CUSTOM REASONS, LETTER & NO PHOTO SCENE
+   FINAL SCRIPT: VIDEO + LASTONE.MP3 SYNCHRONIZED EXECUTION
    ===================================================================== */
 (function(){
 'use strict';
@@ -763,16 +795,17 @@ function drawFx(dt){
   fctx.globalAlpha=1;
 }
 
-/* ---------- Audio System (Uses Exact Paths in audio/ Folder) ---------- */
+/* ---------- Audio System (Dual Track) ---------- */
 var audioState = {
   on: true,
   started: false,
   current: null,
   t1: new Audio('audio/yung-kai-SnapYT.App.mp3'),
-  t2: new Audio('audio/2nd.mp3')
+  t2: new Audio('audio/2nd.mp3'),
+  t2Played: false
 };
 audioState.t1.loop = true;
-audioState.t2.loop = true;
+audioState.t2.loop = false;
 
 function startTrack1(){
   if(audioState.started) return;
@@ -781,7 +814,10 @@ function startTrack1(){
   playAudio(audioState.t1);
 }
 
-function playTrack2(){
+function playTrack2Once(){
+  if(audioState.t2Played) return;
+  audioState.t2Played = true;
+
   if(audioState.t1 && !audioState.t1.paused){
     var fadeOut = setInterval(function(){
       if(audioState.t1.volume > 0.1){
@@ -835,7 +871,7 @@ function sfxPop(){
   } catch(e){}
 }
 
-/* ---------- Scene Controller (7 Scenes total, Photo Scene Removed) ---------- */
+/* ---------- Scene Controller ---------- */
 var MODES = ['light','black','light','dark','dark','dark','dark'];
 function go(i){
   token++; sceneTick = null; cur = i;
@@ -856,7 +892,7 @@ function intro(){
 }
 $('#heartBtn').addEventListener('click', function(){
   if(cur !== 0) return;
-  startTrack1(); // Starts audio/yung-kai-SnapYT.App.mp3
+  startTrack1();
   var r = this.getBoundingClientRect();
   for(var i = 0; i < 18; i++) petal(r.left + r.width / 2 + rand(-25, 25), r.top + r.height / 2 + rand(-25, 25), true);
   confetti(r.left + r.width / 2, r.top + r.height / 2, 45, Math.PI, 8);
@@ -1053,7 +1089,7 @@ function blow(){
 /* 4 Balloons */
 var BAL = [['#7fe5d8','#1fb3a4'],['#ff9a86','#ef5a4c'],['#ffd36b','#f0a22b'],['#ff9ec0','#e8497f'],['#b9a3ff','#7a5af0'],['#8fd0ff','#3b92e0']];
 function balloons(){
-  var rs = cfg.reasons.filter(Boolean).slice(0, 6), box = $('#bals'), list = $('#reasons'), popped = 0;
+  var rs = cfg.reasons.filter(Boolean).slice(0, 4), box = $('#bals'), list = $('#reasons'), popped = 0;
   box.innerHTML = ''; list.innerHTML = '';
   $('#balHint').style.display = '';
   $('#more').classList.remove('show');
@@ -1093,10 +1129,9 @@ function balloons(){
     box.appendChild(b);
   });
 }
-// Goes directly to Envelope scene (index 5)
 $('#balNext').addEventListener('click', function(){ go(5); });
 
-/* 5 Envelope: Automatically switches to 2nd.mp3 */
+/* 5 Envelope */
 var typed = {i:0, t0:0, chars:[], on:false, done:false};
 function envelope(){
   var env = $('#env');
@@ -1110,8 +1145,7 @@ function envelope(){
   typed.on = false; typed.done = false;
   typed.chars = Array.from(cfg.letter);
 
-  // Switch soundtrack to audio/2nd.mp3 right before envelope interaction
-  playTrack2();
+  playTrack2Once();
 }
 $('#env').addEventListener('click', function(){
   var env = this;
@@ -1155,21 +1189,32 @@ $('#card').addEventListener('click', function(){
 });
 $('#letterNext').addEventListener('click', function(){ go(6); });
 
-/* 6 Finale */
+/* 6 Finale: Triggers Tomay Ghire Video + LASTONE.MP3 Simultaneously */
 function finale(){
-  var acc = 0, first = true;
-  rain(70);
-  later(function(){ firework(W * 0.5, H * 0.28); }, 250);
-  sceneTick = function(now, dt){
-    acc += dt;
-    if(acc > (first ? 28 : 50)){
-      acc = 0; first = false;
-      firework(rand(W * 0.15, W * 0.85), rand(H * 0.12, H * 0.5));
-      if(Math.random() < 0.35) rain(5);
-    }
-  };
+  rain(60);
 }
-$('#replay').addEventListener('click', function(){ go(1); });
+$('#tomayTriggerBtn').addEventListener('click', function(){
+  // 1. Pause background track 1/2
+  if(audioState.current) audioState.current.pause();
+
+  // 2. Hide birthday app and show video stage
+  $('#app').style.display = 'none';
+  $('#tomayStage').classList.add('show');
+
+  // 3. Play the exact video
+  var vid = $('#tomayVideo');
+  vid.currentTime = 0;
+  vid.play().catch(function(err){
+    console.log('Video play error:', err);
+  });
+
+  // 4. Play LASTONE.MP3 simultaneously as requested
+  var lastAudio = $('#lastOneAudio');
+  lastAudio.currentTime = 0;
+  lastAudio.play().catch(function(err){
+    console.log('LASTONE.MP3 play error or missing file:', err);
+  });
+});
 
 /* Helper Functions */
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
@@ -1182,36 +1227,9 @@ function render(){
 $('#music').addEventListener('click', toggleMusic);
 $('#s3 .cake').addEventListener('click', blow);
 
-/* Optional Live Config Editor (type #edit in URL) */
-(function(){
-  var show = location.hash === '#edit';
-  if(!show) return;
-  $('#editBtn').classList.add('show');
-  function fill(){
-    $('#f-name').value = cfg.name;
-    $('#f-age').value = cfg.age;
-    $('#f-from').value = cfg.from;
-    $('#f-reasons').value = cfg.reasons.join('\n');
-    $('#f-letter').value = cfg.letter;
-  }
-  $('#editBtn').addEventListener('click', function(){ fill(); $('#panel').classList.add('show'); });
-  $('#closeP').addEventListener('click', function(){ $('#panel').classList.remove('show'); });
-  $('#form').addEventListener('submit', function(e){
-    e.preventDefault();
-    cfg.name = $('#f-name').value.trim() || cfg.name;
-    cfg.age = $('#f-age').value.trim();
-    cfg.from = $('#f-from').value.trim() || cfg.from;
-    cfg.reasons = $('#f-reasons').value.split('\n').map(function(s){ return s.trim(); }).filter(Boolean);
-    cfg.letter = $('#f-letter').value.trim() || cfg.letter;
-    render();
-    $('#panel').classList.remove('show');
-    go(0);
-  });
-})();
-
 /* Animation Loop */
 function frame(now){
-  var dt = Math.min(3, (now - (last || now)) / 16.667);
+  var dt = Math.min(3, (now - (last || now))/16.667);
   last = now;
   drawSky(now);
   drawFx(dt);
