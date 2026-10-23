@@ -620,20 +620,19 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
   </div>
 </main>
 
-<!-- Tomay Ghire Fullscreen Video & Separate MP3 Player Overlay -->
+<!-- Tomay Ghire Fullscreen Video & last.mp3 Player Overlay -->
 <div id="tomayStage">
   <video id="tomayVideo" playsinline preload="auto">
     <source src="audio/Tomar-Jonno-Nilche-SnapYT.App.mp4" type="video/mp4">
   </video>
-  <!-- Separate audio tag for exact custom last song execution -->
   <audio id="lastOneAudio" preload="auto">
-    <source src="audio/LASTONE.mp3" type="audio/mp3">
+    <source src="audio/last.mp3" type="audio/mp3">
   </audio>
 </div>
 
 <script>
 /* =====================================================================
-   FINAL SCRIPT: VIDEO + LASTONE.MP3 SYNCHRONIZED EXECUTION
+   FINAL SCRIPT: VIDEO + LAST.MP3 SYNCHRONIZED EXECUTION
    ===================================================================== */
 (function(){
 'use strict';
@@ -1189,7 +1188,7 @@ $('#card').addEventListener('click', function(){
 });
 $('#letterNext').addEventListener('click', function(){ go(6); });
 
-/* 6 Finale: Triggers Tomay Ghire Video + LASTONE.MP3 Simultaneously */
+/* 6 Finale: Triggers Tomay Ghire Video + last.mp3 Simultaneously */
 function finale(){
   rain(60);
 }
@@ -1208,11 +1207,11 @@ $('#tomayTriggerBtn').addEventListener('click', function(){
     console.log('Video play error:', err);
   });
 
-  // 4. Play LASTONE.MP3 simultaneously as requested
+  // 4. Play last.mp3 simultaneously as requested
   var lastAudio = $('#lastOneAudio');
   lastAudio.currentTime = 0;
   lastAudio.play().catch(function(err){
-    console.log('LASTONE.MP3 play error or missing file:', err);
+    console.log('last.mp3 play error or missing file:', err);
   });
 });
 
