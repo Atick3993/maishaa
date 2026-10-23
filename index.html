@@ -345,51 +345,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 .more.show { opacity: 1; }
 #balNext { margin-top: 14px; }
 
-/* 5 Memories */
-.laneWrap { position: relative; width: 100%; max-width: 760px; }
-.lights { position: absolute; left: 0; right: 0; top: 6px; height: 28px; pointer-events: none; z-index: 2; }
-.lights::before {
-  content: ""; position: absolute; left: -2%; right: -2%; top: 0; height: 22px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.35);
-  border-radius: 0 0 50% 50%/0 0 22px 22px;
-}
-.lights i {
-  position: absolute; top: var(--ly); left: var(--lx); width: 7px; height: 7px; border-radius: 50%;
-  background: #ffd27a; box-shadow: 0 0 10px 3px rgba(255, 210, 122, 0.65);
-  animation: twk 2.2s ease-in-out infinite; animation-delay: var(--td);
-}
-@keyframes twk { 50% { opacity: 0.35; } }
-.lane {
-  display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
-  padding: 34px calc(50% - 105px) 18px; scrollbar-width: none; -webkit-overflow-scrolling: touch;
-}
-.lane::-webkit-scrollbar { display: none; }
-.pol {
-  flex: 0 0 210px; scroll-snap-align: center; position: relative;
-  background: #fbf6ee; padding: 10px 10px 12px; border-radius: 4px;
-  box-shadow: 0 12px 26px rgba(0,0,0,0.45);
-  transform: rotate(var(--r)) scale(var(--s, 0.92));
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  color: #4a3a30;
-}
-.pol::before {
-  content: ""; position: absolute; left: 50%; top: -14px; width: 12px; height: 26px;
-  margin-left: -6px; border-radius: 3px; background: linear-gradient(90deg, #e8c88e, #cfa764);
-}
-.pol .ph { aspect-ratio: 4/4.8; width: 100%; object-fit: cover; display: grid; place-items: center; font-size: 60px; background: var(--g); border-radius: 2px; }
-.pol p { margin: 10px 0 0; min-height: 22px; text-align: center; font-family: var(--f-hand); font-weight: 600; font-size: 13px; }
-.dots { display: flex; gap: 6px; justify-content: center; margin-top: 2px; }
-.dots i { width: 5px; height: 5px; border-radius: 50%; background: rgba(255, 255, 255, 0.3); transition: all 0.3s; }
-.dots i.on { background: var(--gold); transform: scale(1.4); }
-.arrow {
-  position: absolute; top: 50%; z-index: 3; width: 38px; height: 38px; border-radius: 50%;
-  background: rgba(255, 255, 255, 0.14); backdrop-filter: blur(4px); font-size: 20px;
-  display: grid; place-items: center;
-}
-.arrow.l { left: 6px; } .arrow.r { right: 6px; }
-#memNext { margin-top: 20px; }
-
-/* 6 Envelope */
+/* 5 Envelope */
 .env {
   position: relative; width: min(78vw, 280px); aspect-ratio: 3/2; perspective: 900px;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
@@ -438,7 +394,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 #letterNext { position: absolute; left: 0; right: 0; bottom: calc(var(--sab) + 24px); margin: auto; width: max-content; opacity: 0; pointer-events: none; transition: opacity 0.6s ease; }
 #letterNext.show { opacity: 1; pointer-events: auto; }
 
-/* 7 Finale */
+/* 6 Finale */
 .fin { text-align: center; position: relative; z-index: 3; }
 .fin h2 { margin: 0; font-weight: 700; font-size: clamp(30px, 8.5vw, 56px); line-height: 1.1; letter-spacing: .02em; }
 .fin h2 em { display: block; font-family: var(--f-hand); font-style: italic; font-weight: 600; text-transform: none; color: var(--gold); font-size: 0.9em; margin-top: 6px; }
@@ -545,7 +501,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
     <div class="bottomHint" id="treeHint"><span class="pillHint light">Tap anywhere to continue 👆</span></div>
   </section>
 
-  <!-- Scene 3 -->
+  <!-- Scene 3: Cake -->
   <section class="scene" id="s3">
     <h2 class="eyebrow">First things first 🎂</h2>
     <div class="cake">
@@ -583,7 +539,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
     <button class="btn" id="wishBtn" hidden>Tap to blow out the candle 🌬️</button>
   </section>
 
-  <!-- Scene 4 -->
+  <!-- Scene 4: Balloons -->
   <section class="scene" id="s4">
     <h2 class="eyebrow">Pop the balloons 🎈</h2>
     <p class="sub" id="balSub"></p>
@@ -594,21 +550,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
     <button class="btn" id="balNext" hidden>Continue</button>
   </section>
 
-  <!-- Scene 5 -->
-  <section class="scene" id="s5">
-    <h2 class="eyebrow">A walk down memory lane</h2>
-    <p class="sub">swipe the photos 👈 👉 then tap Keep going</p>
-    <div class="laneWrap">
-      <div class="lights" id="lights"></div>
-      <button class="arrow l" id="prevB" aria-label="Previous photo">‹</button>
-      <button class="arrow r" id="nextB" aria-label="Next photo">›</button>
-      <div class="lane" id="lane"></div>
-    </div>
-    <div class="dots" id="dots"></div>
-    <button class="btn" id="memNext">Keep going ✨</button>
-  </section>
-
-  <!-- Scene 6 -->
+  <!-- Scene 5: Envelope -->
   <section class="scene" id="s6">
     <button class="env" id="env" aria-label="Open the envelope">
       <div class="bk"></div>
@@ -624,7 +566,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
     <button class="btn" id="letterNext">Keep going ✨</button>
   </section>
 
-  <!-- Scene 7 -->
+  <!-- Scene 6: Finale -->
   <section class="scene" id="s7">
     <div class="fin">
       <h2>Happyyyy<br>birthdayyuu<em>bbe⚘️</em></h2>
@@ -641,15 +583,13 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
   <div id="panel" role="dialog" aria-label="Customize">
     <form id="form">
       <h3>Make it hers</h3>
-      <p>Type details, add photos, then preview.</p>
+      <p>Type details, then preview.</p>
       <div class="row">
         <label>Her name<input type="text" id="f-name" autocomplete="off"></label>
         <label>Turning (age)<input type="text" id="f-age" autocomplete="off" inputmode="numeric"></label>
       </div>
       <label>From (signature)<input type="text" id="f-from" autocomplete="off"></label>
       <label>Balloon reasons (one per line, up to 6)<textarea id="f-reasons"></textarea></label>
-      <label>Photos<input type="file" id="f-photos" accept="image/*" multiple></label>
-      <label>Photo captions (one per line)<textarea id="f-caps"></textarea></label>
       <label>Letter<textarea id="f-letter" style="min-height:180px"></textarea></label>
       <div class="row">
         <button class="btn" type="submit">Preview from the start</button>
@@ -661,7 +601,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 
 <script>
 /* =====================================================================
-   FULL SCRIPT WITH VERIFIED AUDIO PATHS FROM REPOSITORY
+   FINAL SCRIPT WITH CUSTOM REASONS, LETTER & NO PHOTO SCENE
    ===================================================================== */
 (function(){
 'use strict';
@@ -673,14 +613,12 @@ var cfg={
   age:'',
   from:'Someone who adores you',
   reasons:[
-    'Your laugh fixes my worst days',
-    'You see the best in me',
-    'Ordinary days feel like holidays with you',
-    'Home is wherever you are'
+    'You txt fixes my worst day',
+    'You make my life happier',
+    'Home is where ever are',
+    'Ilabbuuuusooomuchhh'
   ],
-  captions:['Where it all began 💫','Just us 💞','My happy place ☀️','That smile 😍','Forever kind of love ✨'],
-  photos:[],
-  letter:"Happy Birthday, my love ❤️\n\nSome days I'm not sure how I got this lucky. You turn plain days into my favourite ones without even trying.\n\nThank you for your patience, your laugh, and for staying soft with me on the days I'm hard to love.\n\nWhatever this year brings, I want you to know I'm in your corner, always.\n\nToday is yours. Go be celebrated. 🎂"
+  letter:"Happy Birthday to my love🤍\n\nYou are  the most special person in my life, and I feel so lucky to have you. Thank you for being my comfort, my happiness, and the reason behind so many beautiful smiles.♡\n\nI hope this new year of your life brings you endless love, peace, success, and everything your hoort wishes for. Stay happy, stay bicssed, and keep shining just the way you do.⚘️\n\nI don’t want our story to have an ending. I want us to choose each other, again and again, through every season of life. May our love never fade, may we never become strangers, and may every chapter lead us closer to one dream — growing old together and turning this love into a forever marriage. ♡\n\nYou will always be my favourite ferson.\n\nonce again Happy Birthday tasnim my future wifeyyyyy😘"
 };
 
 var app=$('#app'), sky=$('#sky'), fxc=$('#fx');
@@ -897,14 +835,14 @@ function sfxPop(){
   } catch(e){}
 }
 
-/* ---------- Scene Controller ---------- */
-var MODES = ['light','black','light','dark','dark','dark','dark','dark'];
+/* ---------- Scene Controller (7 Scenes total, Photo Scene Removed) ---------- */
+var MODES = ['light','black','light','dark','dark','dark','dark'];
 function go(i){
   token++; sceneTick = null; cur = i;
   $$('.scene').forEach(function(e,k){ e.classList.toggle('on', k === i); });
   app.className = 'm-' + MODES[i];
   sky.style.opacity = MODES[i] === 'dark' ? 1 : 0;
-  [intro, splash, treeScene, cake, balloons, memories, envelope, finale][i]();
+  [intro, splash, treeScene, cake, balloons, envelope, finale][i]();
 }
 window.__go = go;
 
@@ -918,7 +856,7 @@ function intro(){
 }
 $('#heartBtn').addEventListener('click', function(){
   if(cur !== 0) return;
-  startTrack1(); // Starts yung-kai-SnapYT.App.mp3 directly from audio/ folder
+  startTrack1(); // Starts audio/yung-kai-SnapYT.App.mp3
   var r = this.getBoundingClientRect();
   for(var i = 0; i < 18; i++) petal(r.left + r.width / 2 + rand(-25, 25), r.top + r.height / 2 + rand(-25, 25), true);
   confetti(r.left + r.width / 2, r.top + r.height / 2, 45, Math.PI, 8);
@@ -1155,55 +1093,10 @@ function balloons(){
     box.appendChild(b);
   });
 }
+// Goes directly to Envelope scene (index 5)
 $('#balNext').addEventListener('click', function(){ go(5); });
 
-/* 5 Memories */
-var GRAD = ['linear-gradient(135deg,#ffb88c,#de6262)','linear-gradient(135deg,#a18cd1,#fbc2eb)','linear-gradient(135deg,#84fab0,#8fd3f4)','linear-gradient(135deg,#fccb90,#d57eeb)','linear-gradient(135deg,#f6d365,#fda085)','linear-gradient(135deg,#89f7fe,#66a6ff)'];
-var EMO = ['💞','🌅','🍰','📸','🎶','🌸'];
-function buildLane(){
-  var lane = $('#lane'), n = cfg.photos.length || Math.max(5, cfg.captions.length);
-  lane.innerHTML = ''; $('#dots').innerHTML = '';
-  for(var i = 0; i < n; i++){
-    var d = document.createElement('div');
-    d.className = 'pol';
-    d.style.setProperty('--r', ((i % 2 ? 1 : -1) * (1 + (i % 3) * 0.8)) + 'deg');
-    var ph = cfg.photos[i] ? '<img class="ph" alt="" src="' + cfg.photos[i] + '">' : '<div class="ph" style="--g:' + GRAD[i % 6] + '">' + EMO[i % 6] + '</div>';
-    d.innerHTML = ph + '<p>' + esc(cfg.captions[i] || '') + '</p>';
-    lane.appendChild(d);
-    var dot = document.createElement('i');
-    $('#dots').appendChild(dot);
-  }
-}
-function buildLights(){
-  var el = $('#lights'); el.innerHTML = '';
-  var n = Math.max(8, Math.floor(Math.min(W, 760) / 46));
-  for(var i = 0; i < n; i++){
-    var f = (i + 0.5) / n, e = document.createElement('i');
-    e.style.setProperty('--lx', 'calc(' + (f * 100) + '% - 3px)');
-    e.style.setProperty('--ly', (Math.sin(f * Math.PI) * 17 + 2) + 'px');
-    e.style.setProperty('--td', (i % 5) * 0.4 + 's');
-    el.appendChild(e);
-  }
-}
-function laneUpdate(){
-  var lane = $('#lane'), mid = lane.scrollLeft + lane.clientWidth / 2, best = 0, bd = 1e9, items = lane.children;
-  for(var i = 0; i < items.length; i++){
-    var it = items[i], c = it.offsetLeft + it.offsetWidth / 2, d = Math.abs(c - mid), s = 1 - Math.min(0.1, d / lane.clientWidth * 0.25);
-    it.style.setProperty('--s', s.toFixed(3));
-    if(d < bd){ bd = d; best = i; }
-  }
-  $$('#dots i').forEach(function(e, k){ e.classList.toggle('on', k === best); });
-}
-function memories(){
-  buildLights();
-  var l = $('#lane'); l.scrollLeft = 0; laneUpdate();
-}
-$('#lane').addEventListener('scroll', function(){ requestAnimationFrame(laneUpdate); }, {passive:true});
-$('#prevB').addEventListener('click', function(){ $('#lane').scrollBy({left:-220, behavior:'smooth'}); });
-$('#nextB').addEventListener('click', function(){ $('#lane').scrollBy({left:220, behavior:'smooth'}); });
-$('#memNext').addEventListener('click', function(){ go(6); });
-
-/* 6 Envelope: Automatically switches to 2nd.mp3 */
+/* 5 Envelope: Automatically switches to 2nd.mp3 */
 var typed = {i:0, t0:0, chars:[], on:false, done:false};
 function envelope(){
   var env = $('#env');
@@ -1260,9 +1153,9 @@ $('#env').addEventListener('click', function(){
 $('#card').addEventListener('click', function(){
   if(typed.on && !typed.done){ typed.t0 -= 60000; }
 });
-$('#letterNext').addEventListener('click', function(){ go(7); });
+$('#letterNext').addEventListener('click', function(){ go(6); });
 
-/* 7 Finale */
+/* 6 Finale */
 function finale(){
   var acc = 0, first = true;
   rain(70);
@@ -1284,8 +1177,7 @@ function render(){
   $$('.nm').forEach(function(e){ e.textContent = cfg.name; });
   $('#ageLine').textContent = cfg.age ? 'and just like that, you’re turning ' + cfg.age + ' ✨' : 'and just like that, another year of you ✨';
   $('#fromLine').textContent = cfg.from;
-  $('#dear').textContent = 'Dear ' + cfg.name + ',';
-  buildLane();
+  $('#dear').textContent = '';
 }
 $('#music').addEventListener('click', toggleMusic);
 $('#s3 .cake').addEventListener('click', blow);
@@ -1300,21 +1192,16 @@ $('#s3 .cake').addEventListener('click', blow);
     $('#f-age').value = cfg.age;
     $('#f-from').value = cfg.from;
     $('#f-reasons').value = cfg.reasons.join('\n');
-    $('#f-caps').value = cfg.captions.join('\n');
     $('#f-letter').value = cfg.letter;
   }
   $('#editBtn').addEventListener('click', function(){ fill(); $('#panel').classList.add('show'); });
   $('#closeP').addEventListener('click', function(){ $('#panel').classList.remove('show'); });
-  $('#f-photos').addEventListener('change', function(){
-    cfg.photos = Array.prototype.slice.call(this.files).map(function(f){ return URL.createObjectURL(f); });
-  });
   $('#form').addEventListener('submit', function(e){
     e.preventDefault();
     cfg.name = $('#f-name').value.trim() || cfg.name;
     cfg.age = $('#f-age').value.trim();
     cfg.from = $('#f-from').value.trim() || cfg.from;
     cfg.reasons = $('#f-reasons').value.split('\n').map(function(s){ return s.trim(); }).filter(Boolean);
-    cfg.captions = $('#f-caps').value.split('\n').map(function(s){ return s.trim(); });
     cfg.letter = $('#f-letter').value.trim() || cfg.letter;
     render();
     $('#panel').classList.remove('show');
