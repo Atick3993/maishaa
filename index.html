@@ -661,7 +661,7 @@ button:focus-visible, input:focus-visible, textarea:focus-visible {
 
 <script>
 /* =====================================================================
-   FULL SCRIPT WITH EXACT MP3 AUDIO NAMES & FALLBACKS
+   FULL SCRIPT WITH VERIFIED AUDIO PATHS FROM REPOSITORY
    ===================================================================== */
 (function(){
 'use strict';
@@ -825,24 +825,13 @@ function drawFx(dt){
   fctx.globalAlpha=1;
 }
 
-/* ---------- Audio System (Uses Exact Filenames) ---------- */
-function createAudio(primaryPath, fallbackPath){
-  var a = new Audio(primaryPath);
-  a.addEventListener('error', function(){
-    if(fallbackPath && a.src.indexOf(fallbackPath) === -1){
-      a.src = fallbackPath;
-      a.load();
-    }
-  });
-  return a;
-}
-
+/* ---------- Audio System (Uses Exact Paths in audio/ Folder) ---------- */
 var audioState = {
   on: true,
   started: false,
   current: null,
-  t1: createAudio('yung-kai-SnapYT.App.mp3', 'Music/yung-kai-SnapYT.App.mp3'),
-  t2: createAudio('2nd.mp3', 'Music/2nd.mp3')
+  t1: new Audio('audio/yung-kai-SnapYT.App.mp3'),
+  t2: new Audio('audio/2nd.mp3')
 };
 audioState.t1.loop = true;
 audioState.t2.loop = true;
@@ -875,7 +864,9 @@ function playTrack2(){
 function playAudio(track){
   audioState.current = track;
   if(audioState.on){
-    track.play().catch(function(){});
+    track.play().catch(function(err){
+      console.log('Audio autoplay prevented:', err);
+    });
   }
 }
 
@@ -927,7 +918,7 @@ function intro(){
 }
 $('#heartBtn').addEventListener('click', function(){
   if(cur !== 0) return;
-  startTrack1(); // Starts yung-kai-SnapYT.App.mp3 on initial tap
+  startTrack1(); // Starts yung-kai-SnapYT.App.mp3 directly from audio/ folder
   var r = this.getBoundingClientRect();
   for(var i = 0; i < 18; i++) petal(r.left + r.width / 2 + rand(-25, 25), r.top + r.height / 2 + rand(-25, 25), true);
   confetti(r.left + r.width / 2, r.top + r.height / 2, 45, Math.PI, 8);
@@ -1226,7 +1217,7 @@ function envelope(){
   typed.on = false; typed.done = false;
   typed.chars = Array.from(cfg.letter);
 
-  // Switch soundtrack to 2nd.mp3 right before envelope interaction
+  // Switch soundtrack to audio/2nd.mp3 right before envelope interaction
   playTrack2();
 }
 $('#env').addEventListener('click', function(){
