@@ -296,6 +296,9 @@ canvas#artCv{position:absolute;inset:0;width:100%;height:100%;z-index:1}
 @media (hover:hover){#heartBtn:hover{box-shadow:none}}
 #heartBtn svg{filter:drop-shadow(0 10px 18px rgba(255,56,92,.38))}
 #heartBtn svg path{stroke:#ff8da3;stroke-width:2.5;stroke-linejoin:round}
+.w{white-space:normal;max-width:100%}
+.band h2{overflow-wrap:anywhere}
+.card .body,.reasons span{overflow-wrap:anywhere}
 </style>
 </head>
 <body>
@@ -323,7 +326,7 @@ canvas#artCv{position:absolute;inset:0;width:100%;height:100%;z-index:1}
   <section class="scene" id="s1" tabindex="0" role="button" aria-label="Continue to next scene">
     <div class="band">
       <p class="wish">make a wish…</p>
-      <h2><span>Happyyyy birthdayyuu Maishaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbe⚘️ !!!!!!!!</span></h2>
+      <h2><span>Happyyyy birthdayyuu Maishaaaaaa bbe⚘️ !!!!!!!!</span></h2>
       <svg viewBox="0 0 280 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 12C60 4 150 2 276 9M70 15C130 11 190 11 240 14"/></svg>
       <p class="tag">to someone worth celebrating</p>
     </div>
@@ -340,7 +343,7 @@ canvas#artCv{position:absolute;inset:0;width:100%;height:100%;z-index:1}
   </section>
 
   <section class="scene" id="s3" aria-label="Make a wish on the birthday cake">
-    <h2 class="eyebrow"> বাংলা ইংলিশ দিয়ে গুরুচন্ডালি করতাসি,কেমন যে হবে আল্লাহ জানে !!!!!!!!</h2>
+    <h2 class="eyebrow">darao cake banassi 2 sec</h2>
     <div class="cake" tabindex="0" role="button" aria-label="Blow out the birthday candle">
       <svg viewBox="0 0 220 190" width="220" height="190" aria-hidden="true">
         <defs><g id="kg"><g fill="#fffdf7" stroke="#f1d9a0" stroke-width=".6"><ellipse cx="0" cy="-5" rx="3" ry="5"/><ellipse cx="0" cy="-5" rx="3" ry="5" transform="rotate(72)"/><ellipse cx="0" cy="-5" rx="3" ry="5" transform="rotate(144)"/><ellipse cx="0" cy="-5" rx="3" ry="5" transform="rotate(216)"/><ellipse cx="0" cy="-5" rx="3" ry="5" transform="rotate(288)"/></g><circle r="2" fill="#ffb300"/></g></defs>
@@ -439,7 +442,7 @@ var cfg={
     'Happyness is wherever you are!!',
     'Ilabbuuuusooomuchhh!!!'
   ],
-  letter:"Happy Birthday to my love🤍\n\nYou are the most special person in my life, and I feel so lucky to have you. Thank you for being my comfort, my happiness, and the reason behind so many beautiful smiles.♡\n\nI hope this new year of your life brings you endless love, peace, success, and everything your heart wishes for. Stay happy, stay blessed, and keep shining just the way you do.⚘️\n\n লাইফ এ ওই একটা ই আফসোস থাকবে তোমারে নিজের করে পাই নাই!!. তাই কি হইসে? কিছু না... ভালো তো বাসতে আর দোস নাই? ভালো বেসে জাবো নিজের মতো, তুমি না হই ignore e kore gela ajibon.. May our love never fade, may we never become strangers, and may every chapter lead us closer to one dream... জদিও আমার সপ্ন ছিল তমারে বিয়ে করবো, তারপর — আচ্ছা বাদ দেই আমার ড্রিম ধুনে তোমার কাজ নাই . ♡\n\nHappy birthday to my favorite person.\n\nonce again Happy Birthday Maishaaaaaaaaaaaaaaaaaaaaaaaaaa!!! my 1st and most fvt love😘\n\nForever and always yours,\nyour...umm ,ki? tmr ki lagi ami??!! ♡"
+  letter:"Happy Birthday to my love🤍\n\nYou are the most special person in my life, and I feel so lucky to have you. Thank you for being my comfort, my happiness, and the reason behind so many beautiful smiles.♡\n\nI hope this new year of your life brings you endless love, peace, success, and everything your heart wishes for. Stay happy, stay blessed, and keep shining just the way you do.⚘️\n\n লাইফ এ ওই একটা ই আফসোস থাকবে তোমারে নিজের করে পাই নাই!!. তাই কি হইসে? কিছু না... ভালো তো বাসতে আর দোস নাই? ভালো বেসে জাবো নিজের মতো, তুমি না হই ignore e kore gela ajibon.. May our love never fade, may we never become strangers, and may every chapter lead us closer to one dream... জদিও আমার সপ্ন ছিল তমারে বিয়ে করবো, তারপর — আচ্ছা বাদ দেই আমার ড্রিম ধুনে তোমার কাজ নাই . ♡\n\nHappy birthday to my favorite person.\n\nonce again Happy Birthday Maishaaaaaa!!! my 1st and most fvt love😘\n\nForever and always yours,\nyour...umm ,ki? tmr ki lagi ami??!! ♡"
 };
 
 var app=$('#app'), sky=$('#sky'), fxc=$('#fx'), themeMeta=$('#themeMeta');
@@ -1385,7 +1388,7 @@ requestAnimationFrame(frame);
     { start: 31.8, end: 33.1, bg: 'navy',  type: 'two', l1: 'Mohuar',       t1: 31.85,l2: 'bone',         t2: 32.3 },
     { start: 33.1, end: 35.8, bg: 'peach', type: 'two', l1: 'Matal hawa',   t1: 33.15,l2: 'khele',        t2: 34.0, dim2End: 34.6 },
     { start: 35.8, end: 37.2, bg: 'peach', theme: 'navy', type: 'two', isBn: true, small: true,
-      l1: 'শুভজন্মদিন ,তোমার মতো কাউরে লাইফ এ পাওয়া অনেক ভাগ্যের ব্যেপার', t1: 36.0, l2: 'যদিও নিজের করে পাইনাই,কিন্তু ভালো তো এভাবেই বেসে জাবো!! ✨', t2: 36.5 }
+      l1: 'শুভজন্মদিন ,তোমার মতো কাউরে লাইফ এ পাওয়া অনেক ভাগ্যের ব্যেপার', t1: 36.0, l2: 'যদিও নিজের করে পাইনাই,কিন্তু ভালো তো এভাবেই বেসে জাবো!! ✨', t2: 36.5 }
   ];
 
   let activeCueIdx = -1;
@@ -1706,7 +1709,7 @@ requestAnimationFrame(frame);
     ctx.restore();
   }
 
-  
+  /* Kathgolap is pre-rendered once into a sprite (identical artwork, no per-frame gradients) */
   const KG_R = 56, KG_S = (KG_R + 6) * 2;
   let kgSprite = null;
   function buildKathgolapSprite() {
@@ -1759,7 +1762,7 @@ requestAnimationFrame(frame);
     sway: Math.random() * Math.PI * 2
   }));
 
-
+  /* step is normalised to 60fps so a 120Hz screen falls at the same speed as the original */
   function drawFallingFlowers(t, step) {
     for (const f of fallingFlowers) {
       f.y += f.vy * step;
@@ -1823,7 +1826,9 @@ requestAnimationFrame(frame);
   let skyAlpha = 0;
   let lastMs = performance.now();
 
-  
+  /* =====================================================================
+     MAIN RENDER LOOP
+     ===================================================================== */
   function renderFrame(t) {
     const nowMs = performance.now();
     const dt = Math.min(0.1, (nowMs - lastMs) / 1000);
