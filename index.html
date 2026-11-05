@@ -284,6 +284,8 @@ canvas#artCv{position:absolute;inset:0;width:100%;height:100%;z-index:1}
 .card{padding:22px 22px 40px}
 .card .lines{line-height:1.6}
 #lr{color:transparent}
+/* blurred (unreadable) part of the letter */
+.bl{color:transparent!important;text-shadow:0 0 7px rgba(44,22,32,.65);user-select:none;-webkit-user-select:none}
 .card::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-18deg);pointer-events:none;opacity:0}
 .card.show::after{animation:paperSheen 1.6s .5s var(--spring) 1 both}
 @keyframes paperSheen{0%{opacity:1;transform:skewX(-18deg) translateX(0)}100%{opacity:0;transform:skewX(-18deg) translateX(520%)}}
@@ -1202,7 +1204,29 @@ function balloons(){
 $('#balNext').addEventListener('click',function(){ go(5); });
 
 /* 5 Envelope + letter */
-var typed={i:0,t0:0,chars:[],on:false,done:false};
+var typed={i:0,t0:0,chars:[],mask:[],on:false,done:false};
+var KEEP_HEAD=2, KEEP_TAIL=2; /* readable (non-empty) lines at the start / end of the letter; everything between is blurred */
+function buildMask(){
+  var lines=cfg.letter.split('\n'), ne=[], keep={}, mask=[];
+  lines.forEach(function(l,k){ if(l.trim()) ne.push(k); });
+  ne.forEach(function(k,j){ if(j<KEEP_HEAD||j>=ne.length-KEEP_TAIL) keep[k]=true; });
+  lines.forEach(function(l,k){
+    Array.from(l).forEach(function(){ mask.push(!keep[k]); });
+    if(k<lines.length-1) mask.push(false);
+  });
+  return mask;
+}
+function paint(el,from,to){
+  var out='', run='', flag=null, ch=typed.chars, m=typed.mask;
+  function flush(){ if(run) out+=flag?'<span class="bl">'+esc(run)+'</span>':esc(run); run=''; }
+  for(var i=from;i<to;i++){
+    var b=!!m[i];
+    if(b!==flag){ flush(); flag=b; }
+    run+=ch[i];
+  }
+  flush();
+  el.innerHTML=out;
+}
 function envelope(){
   $('#env').classList.remove('open','gone');
   $('#card').classList.remove('show');
@@ -1212,6 +1236,7 @@ function envelope(){
   $('#lt').textContent=''; $('#lf').textContent=''; $('#lr').textContent=cfg.letter;
   typed.on=false; typed.done=false; typed.i=0;
   typed.chars=Array.from(cfg.letter);
+  typed.mask=buildMask();
   playTrack2Once();
 }
 $('#env').addEventListener('click',function(){
@@ -1237,8 +1262,9 @@ $('#env').addEventListener('click',function(){
       if(n!==typed.i){
         typed.i=n;
         var a=Math.max(0,n-3);
-        $('#lt').textContent=typed.chars.slice(0,a).join('');
-        $('#lf').textContent=typed.chars.slice(a,n).join(''); $('#lr').textContent=typed.chars.slice(n).join('');
+        paint($('#lt'),0,a);
+        paint($('#lf'),a,n);
+        $('#lr').textContent=typed.chars.slice(n).join('');
         lines.scrollTop=lines.scrollHeight;
       }
       if(n>=typed.chars.length && !typed.done){
@@ -1246,7 +1272,8 @@ $('#env').addEventListener('click',function(){
         $('#typeHint').classList.remove('show');
         later(function(){
           $('#lf').textContent='';
-          $('#lt').textContent=cfg.letter; $('#lr').textContent='';
+          paint($('#lt'),0,typed.chars.length);
+          $('#lr').textContent='';
           $('#letterNext').classList.add('show');
         },500);
       }
@@ -2009,4 +2036,4 @@ requestAnimationFrame(frame);
 })();
 </script>
 </body>
-</html>
+  </html>
